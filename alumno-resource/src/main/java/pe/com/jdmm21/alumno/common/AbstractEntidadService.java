@@ -9,6 +9,7 @@ public abstract class AbstractEntidadService<T> implements IOperation<T> {
 
 	@Override
 	public void create(T entity) {
+		logger.info("INICIO - Ejecutando create service");
 		getDao().create(entity);
 	}
 

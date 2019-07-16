@@ -1,13 +1,14 @@
 package pe.com.jdmm21.alumno.resource;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -17,8 +18,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import pe.com.jdmm21.alumno.common.IOperationResource;
-import pe.com.jdmm21.alumno.dao.AlumnoDao;
-import pe.com.jdmm21.alumno.dao.AlumnoDaoImpl;
 import pe.com.jdmm21.alumno.model.Alumno;
 import pe.com.jdmm21.alumno.service.AlumnoService;
 
@@ -48,8 +47,14 @@ public class AlumnoResource implements IOperationResource<Alumno>{
 	}
 
 	@Override
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/create")
 	public Response create(Alumno entity) {
-		return null;
+		logger.info("INICIO - ejecucion de post");
+		alumnoService.create(entity);
+		logger.info("FIN - ejecucion de post");
+		return Response.ok().build();
 	}
 
 	@Override

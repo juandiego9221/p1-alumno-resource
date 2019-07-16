@@ -24,6 +24,7 @@ public class AlumnoDaoImpl extends AlumnoDao {
 
 	@Override
 	public void create(Alumno entity) {
+		logger.info("Ejecutando createx");
 		super.create(entity);
 	}
 
